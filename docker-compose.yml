@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build: ./service-auth
+    ports:
+      - '3000:3000'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/auth
+      - JWT_SECRET=123
+
+  # user-service:
+  #   build: ./service-user
+  #   ports:
+  #     - '3001:3001'
+  #   environment:
+  #     - MONGO_URI=mongodb://mongo:27017/users
+
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
