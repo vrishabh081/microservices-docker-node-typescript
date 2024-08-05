@@ -1,0 +1,24 @@
+export interface CompanyInterface {
+    company_name: string | undefined,
+    company_address: string | undefined,
+    company_number: string | undefined,
+    is_deleted: boolean | undefined,
+}
+
+export interface UserInterface {
+    company_id: string | undefined,
+    parent_id: string | undefined,
+    full_name: string | undefined,
+    user_name: string | undefined,
+    email: string | undefined,
+    password: string | undefined,
+    phone: string | undefined,
+    address: string | undefined,
+    age: number | undefined,
+    is_deleted: boolean | undefined,
+}
+
+export interface RegisterInterface {
+    company_info: CompanyInterface,
+    user_info: UserInterface
+}
