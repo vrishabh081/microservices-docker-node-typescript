@@ -1,14 +1,15 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { dbConnection } from './config/db';
 import express from 'express';
 import bodyParser from 'body-parser';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
 // Server-
-app.listen(PORT, () => {
-    dbConnection
-    console.log(`Auth Service running on http://localhost:${PORT}`);
+app.listen(process.env.PORT, async () => {
+    dbConnection;
+    console.log(`Auth Service running on http://localhost:${process.env.PORT}/${process.env.SERVICE_TYPE}`)
 });
