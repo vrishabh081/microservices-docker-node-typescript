@@ -13,6 +13,11 @@ const userSchema = new Schema<UserInterface>({
         ref: "user",
         default: null
     },
+    role: {
+        type: String,
+        enum: ["admin", "owner", "user"],
+        default: "owner"
+    },
     full_name: {
         type: String,
         default: null

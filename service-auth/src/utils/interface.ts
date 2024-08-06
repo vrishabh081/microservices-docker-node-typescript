@@ -8,6 +8,7 @@ export interface CompanyInterface {
 export interface UserInterface {
     company_id: string | undefined,
     parent_id: string | undefined,
+    role?: string,
     full_name: string | undefined,
     user_name: string | undefined,
     email: string | undefined,
@@ -21,4 +22,13 @@ export interface UserInterface {
 export interface RegisterInterface {
     company_info: CompanyInterface,
     user_info: UserInterface
+}
+
+export interface LoginInterface {
+    email: string,
+    password: string
+}
+
+export interface ResponseMessageInterface {
+    [key: string]: string
 }
