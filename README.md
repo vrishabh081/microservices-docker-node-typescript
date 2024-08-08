@@ -28,15 +28,11 @@
 ### Models-
 - Company
 - User
-- Permission
 
 ### Apis for auth service-
 - Register api for company owner,
 - Login,
 - Forget password,
-- Get profile,
-- Update profile,
 - Change password,
-- Manage users and their permissions,
 
 **Phase 1 is gonna complete here for auth service**
