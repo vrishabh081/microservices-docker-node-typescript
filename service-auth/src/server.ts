@@ -8,6 +8,7 @@ import router from "./routes";
 const app = express();
 
 app.use(bodyParser.json());
+app.use(express.json())
 app.use("/", router)
 
 // Server-

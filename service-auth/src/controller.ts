@@ -5,6 +5,27 @@ import { LoginInterface, RegisterInterface } from "./utils/interface";
 import { errorMessage, successMessage } from "./utils/responseMessage";
 import { generateJwtToken } from "./utils/commonFunction";
 
+
+// Upload files-
+export const uploadMedia = async (req: Request, res: Response) => {
+    try{
+        console.log(req.files)
+        if(!req.files){
+            return res.status(400).json({
+                success: false,
+                message: errorMessage.noFile
+            });
+        }
+        console.log(req.files)
+    }
+    catch(error){
+        return res.status(500).json({
+            success: false,
+            data: error
+        })
+    }
+}
+
 // Register-
 export const register = async (req: Request<{}, {}, RegisterInterface>, res: Response) => {
     try {
@@ -16,7 +37,10 @@ export const register = async (req: Request<{}, {}, RegisterInterface>, res: Res
         const companyDetail = await companyData.save();
 
         // User registration-
-        const userData = new UserModel({...data.user_info, company_id: companyDetail._id});
+        const userData = new UserModel({
+            ...data.user_info, 
+            company_id: companyDetail._id,
+        });
         const userDetail = await userData.save();
 
         res.status(200).json({

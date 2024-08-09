@@ -26,6 +26,10 @@ const userSchema = new Schema<UserInterface>({
         type: String,
         default: null
     },
+    profile_image: {
+        type: String,
+        default: null
+    },
     email: {
         type: String,
         required: true,

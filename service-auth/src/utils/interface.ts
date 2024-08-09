@@ -11,6 +11,7 @@ export interface UserInterface {
     role?: string,
     full_name: string | undefined,
     user_name: string | undefined,
+    profile_image?: string,
     email: string | undefined,
     password: string | undefined,
     phone: string | undefined,
@@ -31,4 +32,9 @@ export interface LoginInterface {
 
 export interface ResponseMessageInterface {
     [key: string]: string
+}
+
+export interface UploadMediaInterface {
+    file: string,
+    
 }
