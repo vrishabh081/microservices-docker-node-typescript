@@ -9,7 +9,8 @@ import { kafka } from "./kafka.js";
 
     console.log("Consumer subscribing");
     await consumer.subscribe({
-        topics: ["rider-updates"]
+        topics: ["rider-updates"],
+        fromBeginning: true
     });
     console.log("Consumer subscribed successfully");
 
