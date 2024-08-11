@@ -19,7 +19,6 @@ export const kafkaAdmin = async () => {
 
         // Disconnected admin-
         await admin.disconnect();
-        console.log("Kafka Dsconnected");
     }
     catch(error){;
         console.log("Following error we are getting in kafka")

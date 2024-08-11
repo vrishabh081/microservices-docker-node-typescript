@@ -1,4 +1,5 @@
 import { kafka } from "../config/kafka";
+import UserCacheModel from "../model/userCache";
 
 export const consumerFun = async () => {
     try{
@@ -17,7 +18,11 @@ export const consumerFun = async () => {
         // Getting messages-
         await consumer.run({
             eachMessage: async ({ topic, partition, message, heartbeat, pause }) => {
-                console.log(`Topic: ${topic}, Message: ${message?.value?.toString()}`)
+                // Save user data of auth service-
+                const parsedMessage = JSON.parse(message.value?.toString() || '{}');
+                const userData = new UserCacheModel(parsedMessage);
+                await userData.save();
+                console.log("User data has been saved.");
             }
         })
     }
