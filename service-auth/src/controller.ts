@@ -4,6 +4,7 @@ import UserModel from "./model/user";
 import { LoginInterface, RegisterInterface } from "./utils/interface";
 import { errorMessage, successMessage } from "./utils/responseMessage";
 import { generateJwtToken } from "./utils/commonFunction";
+import { userCacheProducer } from "./kafka/producer";
 
 
 // Upload files-
@@ -42,6 +43,15 @@ export const register = async (req: Request<{}, {}, RegisterInterface>, res: Res
             company_id: companyDetail._id,
         });
         const userDetail = await userData.save();
+
+        // Use of kafka-
+        const obj = {
+            user_id: String(userDetail._id )|| "",
+            full_name: userDetail.full_name || "",
+            user_name: userDetail.user_name || "",
+            email: userDetail.email || ""
+        }
+        await userCacheProducer(obj)
 
         res.status(200).json({
             success: true,

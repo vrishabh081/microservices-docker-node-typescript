@@ -34,7 +34,9 @@ export interface ResponseMessageInterface {
     [key: string]: string
 }
 
-export interface UploadMediaInterface {
-    file: string,
-    
+export interface UserCacheInterface {
+    user_id: string,
+    full_name: string,
+    user_name: string,
+    email: string
 }
