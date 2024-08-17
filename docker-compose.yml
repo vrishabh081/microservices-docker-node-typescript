@@ -9,12 +9,12 @@ services:
       - MONGO_URI=mongodb://mongo:27017/auth
       - JWT_SECRET=123
 
-  # user-service:
-  #   build: ./service-user
-  #   ports:
-  #     - '3001:3001'
-  #   environment:
-  #     - MONGO_URI=mongodb://mongo:27017/users
+  user-service:
+    build: ./service-product
+    ports:
+      - '3001:3001'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/product
 
   mongo:
     image: mongo

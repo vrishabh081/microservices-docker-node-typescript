@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 
 export const generateJwtToken = (id: ObjectId): string => {
     try{
-        const key = sign({id}, `${process.env.JWT_SECRET_KEY}`, {expiresIn: "1h"})
+        const key = sign({id}, `${process.env.JWT_SECRET_KEY}`, {expiresIn: "7d"})
         return key
     }
     catch(error){
